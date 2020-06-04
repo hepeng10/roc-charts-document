@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>目录结构 | roc-charts 开发文档</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="roc-charts 是一个基于 zrender 的开源关系图谱框架">
+    <link rel="preload" href="/assets/css/0.styles.9bcdb81a.css" as="style"><link rel="preload" href="/assets/js/app.6b2ea5ff.js" as="script"><link rel="preload" href="/assets/js/2.7cf47e00.js" as="script"><link rel="preload" href="/assets/js/7.6cdc32e4.js" as="script"><link rel="prefetch" href="/assets/js/3.2b816402.js"><link rel="prefetch" href="/assets/js/4.38cf52e0.js"><link rel="prefetch" href="/assets/js/5.3f2aee8f.js"><link rel="prefetch" href="/assets/js/6.7a77bbe6.js"><link rel="prefetch" href="/assets/js/8.62d869be.js"><link rel="prefetch" href="/assets/js/9.06428826.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9bcdb81a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">roc-charts 开发文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>指南</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/" aria-current="page" class="sidebar-link">介绍</a></li><li><a href="/basic.html" class="sidebar-link">基本使用</a></li><li><a href="/directory.html" aria-current="page" class="active sidebar-link">目录结构</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>进阶</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/node.html" class="sidebar-link">node 属性</a></li><li><a href="/link.html" class="sidebar-link">link 属性</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="目录结构"><a href="#目录结构" class="header-anchor">#</a> 目录结构</h1> <div class="language- extra-class"><pre class="language-text"><code>└── src
+    ├── chart  (roc-charts 根目录，所有图谱文件都在这里面)
+    │   ├── charts  (各种图谱的坐标算法具体实现)
+    │   │   ├── annular
+    │   │   ├── circle
+    │   │   └── force
+    │   ├── component  (封装图谱用的 DOM 组件，原生 JS 实现)
+    │   │   ├── IconBtn
+    │   │   └── IconSelect
+    │   ├── config (图谱的一些配置)
+    │   ├── core (核心代码)
+    │   │   ├── chart  (图谱算法基类)
+    │   │   ├── event  (事件类，订阅发布模式)
+    │   │   ├── graph  (绘制各种图形的具体实现)
+    │   │   ├── painter  (画笔类)
+    │   │   ├── plugin  (插件基类)
+    │   │   ├── scene  (场景类)
+    │   │   └── util  (暴露给用户用于操作图谱的一些常用方法)
+    │   ├── images
+    │   │   ├── chartIcon
+    │   │   └── pluginIcon
+    │   ├── plugins  (插件目录，各种插件的具体实现)
+    │   ├── styles  (图谱的公共样式)
+    │   └── utils  (图谱用的一些工具方法)
+    └── containers
+        └── test  (调用图谱的 demo 文件)
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/basic.html" class="prev">
+        基本使用
+      </a></span> <span class="next"><a href="/node.html">
+        node 属性
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6b2ea5ff.js" defer></script><script src="/assets/js/2.7cf47e00.js" defer></script><script src="/assets/js/7.6cdc32e4.js" defer></script>
+  </body>
+</html>

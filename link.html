@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>link 属性 | roc-charts 开发文档</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="roc-charts 是一个基于 zrender 的开源关系图谱框架">
+    <link rel="preload" href="/assets/css/0.styles.9bcdb81a.css" as="style"><link rel="preload" href="/assets/js/app.6b2ea5ff.js" as="script"><link rel="preload" href="/assets/js/2.7cf47e00.js" as="script"><link rel="preload" href="/assets/js/8.62d869be.js" as="script"><link rel="prefetch" href="/assets/js/3.2b816402.js"><link rel="prefetch" href="/assets/js/4.38cf52e0.js"><link rel="prefetch" href="/assets/js/5.3f2aee8f.js"><link rel="prefetch" href="/assets/js/6.7a77bbe6.js"><link rel="prefetch" href="/assets/js/7.6cdc32e4.js"><link rel="prefetch" href="/assets/js/9.06428826.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9bcdb81a.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">roc-charts 开发文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>指南</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/" aria-current="page" class="sidebar-link">介绍</a></li><li><a href="/basic.html" class="sidebar-link">基本使用</a></li><li><a href="/directory.html" class="sidebar-link">目录结构</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>进阶</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/node.html" class="sidebar-link">node 属性</a></li><li><a href="/link.html" aria-current="page" class="active sidebar-link">link 属性</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="link-属性"><a href="#link-属性" class="header-anchor">#</a> link 属性</h1> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
+    nodes<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    links<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">from</span><span class="token operator">:</span> <span class="token string">'id1'</span><span class="token punctuation">,</span>  <span class="token comment">// 起始 node 节点 id（必选）</span>
+            to<span class="token operator">:</span> <span class="token string">'id2'</span><span class="token punctuation">,</span>  <span class="token comment">// 目标 node 节点 id （必选）</span>
+            text<span class="token operator">:</span> <span class="token string">'xxx'</span><span class="token punctuation">,</span>  <span class="token comment">// 线上的文字</span>
+            style<span class="token operator">:</span> <span class="token punctuation">{</span>
+                dashed<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>  <span class="token comment">// 是否为虚线，默认为 false</span>
+                <span class="token comment">// 其它 zrender 的样式，详见：https://ecomfe.github.io/zrender-doc/public/api.html#zrenderdisplayable 表格里的 opts.style</span>
+                <span class="token operator">...</span>otherZrenderStyle
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/node.html" class="prev">
+        node 属性
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.6b2ea5ff.js" defer></script><script src="/assets/js/2.7cf47e00.js" defer></script><script src="/assets/js/8.62d869be.js" defer></script>
+  </body>
+</html>
