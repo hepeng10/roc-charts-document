@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>内置插件 | roc-charts 开发文档</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="roc-charts 是一个基于 zrender 的开源关系图谱框架">
+    <link rel="preload" href="/roc-charts-document/assets/css/0.styles.fa358280.css" as="style"><link rel="preload" href="/roc-charts-document/assets/js/app.571a9183.js" as="script"><link rel="preload" href="/roc-charts-document/assets/js/2.7cf47e00.js" as="script"><link rel="preload" href="/roc-charts-document/assets/js/12.68a7537e.js" as="script"><link rel="prefetch" href="/roc-charts-document/assets/js/10.9b69b227.js"><link rel="prefetch" href="/roc-charts-document/assets/js/11.296e9d8a.js"><link rel="prefetch" href="/roc-charts-document/assets/js/3.bee534ad.js"><link rel="prefetch" href="/roc-charts-document/assets/js/4.a87e3754.js"><link rel="prefetch" href="/roc-charts-document/assets/js/5.3f2aee8f.js"><link rel="prefetch" href="/roc-charts-document/assets/js/6.4bca74df.js"><link rel="prefetch" href="/roc-charts-document/assets/js/7.dc7a3f90.js"><link rel="prefetch" href="/roc-charts-document/assets/js/8.ada307ad.js"><link rel="prefetch" href="/roc-charts-document/assets/js/9.46b47bf6.js">
+    <link rel="stylesheet" href="/roc-charts-document/assets/css/0.styles.fa358280.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/roc-charts-document/" class="home-link router-link-active"><!----> <span class="site-name">roc-charts 开发文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>指南</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/roc-charts-document/" aria-current="page" class="sidebar-link">介绍</a></li><li><a href="/roc-charts-document/basic.html" class="sidebar-link">基本使用</a></li><li><a href="/roc-charts-document/directory.html" class="sidebar-link">目录结构</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>进阶</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/roc-charts-document/data.html" class="sidebar-link">图谱数据 - data</a></li><li><a href="/roc-charts-document/config.html" class="sidebar-link">图谱配置 - config</a></li><li><a href="/roc-charts-document/chartAPI.html" class="sidebar-link">图谱 API</a></li><li><a href="/roc-charts-document/charts.html" class="sidebar-link">内置图布局</a></li><li><a href="/roc-charts-document/plugins.html" aria-current="page" class="active sidebar-link">内置插件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/roc-charts-document/plugins.html#插件说明" class="sidebar-link">插件说明</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="内置插件"><a href="#内置插件" class="header-anchor">#</a> 内置插件</h1> <p>插件用于扩展图谱功能，通过添加自定义操作并调用图谱提供的方法以及修改图谱 store 等操作实现。
+可以通过在配置中禁用插件功能，一些插件也有独立的配置。</p> <h3 id="禁用所有插件"><a href="#禁用所有插件" class="header-anchor">#</a> 禁用所有插件</h3> <div class="language-js extra-class"><pre class="language-js"><code>chart<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    core<span class="token operator">:</span> <span class="token punctuation">{</span>
+        initPlugin<span class="token operator">:</span> <span class="token boolean">false</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="禁用部分插件"><a href="#禁用部分插件" class="header-anchor">#</a> 禁用部分插件</h3> <div class="language-js extra-class"><pre class="language-js"><code>chart<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    plugin<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 插件的公共配置</span>
+        common<span class="token operator">:</span> <span class="token punctuation">{</span>
+            <span class="token comment">// 配置禁用的插件，默认为空</span>
+            disable<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'changeNodeDrag'</span><span class="token punctuation">,</span> <span class="token string">'nodeInfo'</span><span class="token punctuation">,</span> <span class="token string">'changeLineWidth'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="独立插件的配置"><a href="#独立插件的配置" class="header-anchor">#</a> 独立插件的配置</h3> <div class="language-js extra-class"><pre class="language-js"><code>chart<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    plugin<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 与 common 配置项同级，除了 common 都是独立插件的配置。字段名为插件的名称</span>
+        changeChart<span class="token operator">:</span> <span class="token punctuation">{</span>  <span class="token comment">// 图谱切换插件配置</span>
+            charts<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'force'</span><span class="token punctuation">,</span> <span class="token string">'annular'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="插件说明"><a href="#插件说明" class="header-anchor">#</a> 插件说明</h2> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p>所有插件的配置都统一使用对象 {} 格式进行配置。<br>
+插件配置为空对象 {}，说明此插件没有配置项。</p></div> <h3 id="核心插件"><a href="#核心插件" class="header-anchor">#</a> 核心插件</h3> <p>核心插件的配置通常用户图谱内部的操作，一般不需要配置核心插件</p> <div class="language-js extra-class"><pre class="language-js"><code>plugin<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 点击空白处，所有节点和线高亮功能</span>
+    blankClick<span class="token operator">:</span> <span class="token punctuation">{</span>
+        click<span class="token operator">:</span> <span class="token boolean">true</span>  <span class="token comment">// 默认为 true，设为 false 则禁用。也可通过 disable 配置禁用。</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">// 拖拽空白处图谱移动功能</span>
+    blankDrag<span class="token operator">:</span> <span class="token punctuation">{</span>
+        drag<span class="token operator">:</span> <span class="token boolean">true</span>  <span class="token comment">// 默认为 true，设为 false 则禁用。也可通过 disable 配置禁用。</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="工具栏插件"><a href="#工具栏插件" class="header-anchor">#</a> 工具栏插件</h3> <p>顶部工具栏按钮相关插件</p> <div class="language-js extra-class"><pre class="language-js"><code>plugin<span class="token operator">:</span> <span class="token punctuation">{</span>
+    changeAnimation<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token comment">// 图谱动画是否启动插件</span>
+    changeChart<span class="token operator">:</span> <span class="token punctuation">{</span>  <span class="token comment">// 图谱切换插件</span>
+        charts<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'force'</span><span class="token punctuation">]</span>  <span class="token comment">// 配置可切换的图谱</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    changeLineWidth<span class="token operator">:</span> <span class="token punctuation">{</span>  <span class="token comment">// 线条宽度切换插件</span>
+        width<span class="token operator">:</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    changeNodeDrag<span class="token operator">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>  <span class="token comment">// 节点拖拽功能是否启用插件</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="其它插件"><a href="#其它插件" class="header-anchor">#</a> 其它插件</h3> <div class="language-js extra-class"><pre class="language-js"><code>plugin<span class="token operator">:</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/roc-charts-document/charts.html" class="prev">
+        内置图布局
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/roc-charts-document/assets/js/app.571a9183.js" defer></script><script src="/roc-charts-document/assets/js/2.7cf47e00.js" defer></script><script src="/roc-charts-document/assets/js/12.68a7537e.js" defer></script>
+  </body>
+</html>

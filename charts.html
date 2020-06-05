@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>内置图布局 | roc-charts 开发文档</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="roc-charts 是一个基于 zrender 的开源关系图谱框架">
+    <link rel="preload" href="/roc-charts-document/assets/css/0.styles.fa358280.css" as="style"><link rel="preload" href="/roc-charts-document/assets/js/app.571a9183.js" as="script"><link rel="preload" href="/roc-charts-document/assets/js/2.7cf47e00.js" as="script"><link rel="preload" href="/roc-charts-document/assets/js/8.ada307ad.js" as="script"><link rel="prefetch" href="/roc-charts-document/assets/js/10.9b69b227.js"><link rel="prefetch" href="/roc-charts-document/assets/js/11.296e9d8a.js"><link rel="prefetch" href="/roc-charts-document/assets/js/12.68a7537e.js"><link rel="prefetch" href="/roc-charts-document/assets/js/3.bee534ad.js"><link rel="prefetch" href="/roc-charts-document/assets/js/4.a87e3754.js"><link rel="prefetch" href="/roc-charts-document/assets/js/5.3f2aee8f.js"><link rel="prefetch" href="/roc-charts-document/assets/js/6.4bca74df.js"><link rel="prefetch" href="/roc-charts-document/assets/js/7.dc7a3f90.js"><link rel="prefetch" href="/roc-charts-document/assets/js/9.46b47bf6.js">
+    <link rel="stylesheet" href="/roc-charts-document/assets/css/0.styles.fa358280.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/roc-charts-document/" class="home-link router-link-active"><!----> <span class="site-name">roc-charts 开发文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>指南</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/roc-charts-document/" aria-current="page" class="sidebar-link">介绍</a></li><li><a href="/roc-charts-document/basic.html" class="sidebar-link">基本使用</a></li><li><a href="/roc-charts-document/directory.html" class="sidebar-link">目录结构</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>进阶</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/roc-charts-document/data.html" class="sidebar-link">图谱数据 - data</a></li><li><a href="/roc-charts-document/config.html" class="sidebar-link">图谱配置 - config</a></li><li><a href="/roc-charts-document/chartAPI.html" class="sidebar-link">图谱 API</a></li><li><a href="/roc-charts-document/charts.html" aria-current="page" class="active sidebar-link">内置图布局</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/roc-charts-document/charts.html#force-力导图" class="sidebar-link">force —— 力导图</a></li><li class="sidebar-sub-header"><a href="/roc-charts-document/charts.html#circle-圈层图" class="sidebar-link">circle —— 圈层图</a></li><li class="sidebar-sub-header"><a href="/roc-charts-document/charts.html#annular-圆环图" class="sidebar-link">annular —— 圆环图</a></li></ul></li><li><a href="/roc-charts-document/plugins.html" class="sidebar-link">内置插件</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="内置图布局"><a href="#内置图布局" class="header-anchor">#</a> 内置图布局</h1> <p>roc-charts 旨在提供图谱操作功能，内置图谱布局算法并不多，更推荐开发者实现自己的布局算法注册到 roc-charts 中。
+目前内置了3种布局算法：力导向图（force），圈层图（circle），圆环图（annular）。今后会考虑加入更多的图布局。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> chart <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Chart</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'domID'</span><span class="token punctuation">,</span>
+    type<span class="token operator">:</span> <span class="token string">'force'</span><span class="token punctuation">,</span>  <span class="token comment">// 传入图谱类型即图谱名称绘制相应图谱</span>
+    data<span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><div class="custom-block warning"><p class="custom-block-title">WARNING</p> <p>某些布局算法对传入的 data 数据要求传入一些额外的字段。</p></div> <h2 id="force-力导图"><a href="#force-力导图" class="header-anchor">#</a> force —— 力导图</h2> <p>力导向图对 data 数据没有要求，在 config 中可配置力导向算法计算次数，默认值为200。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">new</span> <span class="token class-name">chart</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    <span class="token comment">// 所有布局配置</span>
+    chart<span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token comment">// force 力导图配置</span>
+        force<span class="token operator">:</span> <span class="token punctuation">{</span>
+            tickCount<span class="token operator">:</span> <span class="token number">300</span>  <span class="token comment">// 设置力导图计算次数</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="circle-圈层图"><a href="#circle-圈层图" class="header-anchor">#</a> circle —— 圈层图</h2> <p>圈层图的布局为目标节点在中心，与其直接相连的1度节点在第一层，与1度节点直接相连的2度节点在第二层，以此类推。所以节点中需要一个 degree 属性标识当前节点的度数。</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> data <span class="token operator">=</span> <span class="token punctuation">{</span>
+    nodes<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            id<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+            name<span class="token operator">:</span> <span class="token string">'目标节点'</span><span class="token punctuation">,</span>
+            degree<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>  <span class="token comment">// 0是中心节点</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{</span>
+            id： <span class="token number">1</span>，
+            name<span class="token operator">:</span> <span class="token string">'节点1'</span><span class="token punctuation">,</span>
+            degree<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>  <span class="token comment">// 1度节点，在第一圈</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    links<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="annular-圆环图"><a href="#annular-圆环图" class="header-anchor">#</a> annular —— 圆环图</h2> <p>圆环图对节点属性没有要求，也没有配置项，但是有个要求是所有的节点都必须相连，不能有游离节点（独立的与其它节点没有连线的节点）。如果有游离节点则会出错无法绘制。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/roc-charts-document/chartAPI.html" class="prev">
+        图谱 API
+      </a></span> <span class="next"><a href="/roc-charts-document/plugins.html">
+        内置插件
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/roc-charts-document/assets/js/app.571a9183.js" defer></script><script src="/roc-charts-document/assets/js/2.7cf47e00.js" defer></script><script src="/roc-charts-document/assets/js/8.ada307ad.js" defer></script>
+  </body>
+</html>
