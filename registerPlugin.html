@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>自定义插件 | roc-charts 开发文档</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="roc-charts 是一个基于 zrender 的开源关系图谱框架">
+    <link rel="preload" href="/roc-charts-document/assets/css/0.styles.fa358280.css" as="style"><link rel="preload" href="/roc-charts-document/assets/js/app.b38969aa.js" as="script"><link rel="preload" href="/roc-charts-document/assets/js/2.7cf47e00.js" as="script"><link rel="preload" href="/roc-charts-document/assets/js/15.cb6b7bd1.js" as="script"><link rel="prefetch" href="/roc-charts-document/assets/js/10.bf12f6a8.js"><link rel="prefetch" href="/roc-charts-document/assets/js/11.296e9d8a.js"><link rel="prefetch" href="/roc-charts-document/assets/js/12.e1e526e1.js"><link rel="prefetch" href="/roc-charts-document/assets/js/13.b5b6142b.js"><link rel="prefetch" href="/roc-charts-document/assets/js/14.e3c75357.js"><link rel="prefetch" href="/roc-charts-document/assets/js/3.54c6744d.js"><link rel="prefetch" href="/roc-charts-document/assets/js/4.b0834aee.js"><link rel="prefetch" href="/roc-charts-document/assets/js/5.3f2aee8f.js"><link rel="prefetch" href="/roc-charts-document/assets/js/6.27241a33.js"><link rel="prefetch" href="/roc-charts-document/assets/js/7.82e86e26.js"><link rel="prefetch" href="/roc-charts-document/assets/js/8.a3688897.js"><link rel="prefetch" href="/roc-charts-document/assets/js/9.46b47bf6.js">
+    <link rel="stylesheet" href="/roc-charts-document/assets/css/0.styles.fa358280.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/roc-charts-document/" class="home-link router-link-active"><!----> <span class="site-name">roc-charts 开发文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>指南</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/roc-charts-document/" aria-current="page" class="sidebar-link">介绍</a></li><li><a href="/roc-charts-document/basic.html" class="sidebar-link">基本使用</a></li><li><a href="/roc-charts-document/directory.html" class="sidebar-link">目录结构</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>进阶</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/roc-charts-document/data.html" class="sidebar-link">图谱数据 - data</a></li><li><a href="/roc-charts-document/config.html" class="sidebar-link">图谱配置 - config</a></li><li><a href="/roc-charts-document/chartAPI.html" class="sidebar-link">图谱 API</a></li><li><a href="/roc-charts-document/charts.html" class="sidebar-link">内置图布局</a></li><li><a href="/roc-charts-document/plugins.html" class="sidebar-link">内置插件</a></li><li><a href="/roc-charts-document/event.html" class="sidebar-link">事件系统</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>深入</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/roc-charts-document/registerChart.html" class="sidebar-link">自定义布局</a></li><li><a href="/roc-charts-document/registerPlugin.html" aria-current="page" class="active sidebar-link">自定义插件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/roc-charts-document/registerPlugin.html#插件的属性和方法" class="sidebar-link">插件的属性和方法</a></li><li class="sidebar-sub-header"><a href="/roc-charts-document/registerPlugin.html#插件-demo" class="sidebar-link">插件 Demo</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="自定义插件"><a href="#自定义插件" class="header-anchor">#</a> 自定义插件</h1> <p>插件也是 roc-charts 的一个重要功能，可以扩展对图谱的操作。roc-charts 内置了多个插件，开发者也能方便的开发自定义插件。</p> <h2 id="插件的属性和方法"><a href="#插件的属性和方法" class="header-anchor">#</a> 插件的属性和方法</h2> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> Chart<span class="token punctuation">,</span> <span class="token punctuation">{</span> PluginBase <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'roc-charts'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 创建一个自定义插件类并继承 PluginBase 类</span>
+<span class="token keyword">class</span> <span class="token class-name">CustomPlugin</span> <span class="token keyword">extends</span> <span class="token class-name">PluginBase</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* 通自定义布局一样，插件也拥有以下属性。而插件的开发可能更需要了解 roc-charts 的源码，可参考内置插件的代码。
+    * $chart;  // roc-charts 实例，同 new Chart() 生成的对象实例
+    * $store;  // data 生成的 store 对象。包括 nodes, links, nodesKV, linksKV, nodesDegree
+    * $config;  // core 配置
+    * config;  // 此插件配置，chart.init() 配置中传递给此插件
+    * $util;  // $chart.util 对象
+    * 
+    * $scene;  // scene 类实例对象
+    * $painter; // painter 类实例对象
+    * $plugin;  // plugin 类实例对象
+    * $zr;  // zrender 实例对象
+    *
+    * dependLoaded;  // 插件可能依赖其它插件，通过此属性判断依赖是否都成功加载
+    */</span>
+    
+    <span class="token comment">// 设置插件的名称，chart.init() 中的插件配置时依据此名称</span>
+    <span class="token keyword">static</span> pluginName <span class="token operator">=</span> <span class="token string">'customPlugin'</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// 此插件默认配置，返回一个对象</span>
+    <span class="token function">defaultConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">/*
+    * 指定依赖的插件，在实例化此插件的时候会先实例化依赖的插件
+    * 但是如果依赖的插件在 chart.init() 时被配置在 disable 中，则依赖的插件不会被实例化，但是此插件依然会实例化。
+    */</span>
+    <span class="token function">depend</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span>
+            <span class="token comment">// 'nodeClick'  返回依赖插件名数组</span>
+        <span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">/*
+    * PluginBase 提供的创建插件工具栏 button 组件的方法
+    * @param icon {dataURI} 工具栏中显示的图标
+    * @param name {str} 插件的名称（可选）
+    * @param info {str} 插件提示信息，鼠标悬浮展示
+    * @param active {bool} 图标是否处于激活状态（可选）
+    * @param activeChange {bool} 能否修改图标的激活状态。比如下载图谱的插件，点击后就不会修改激活状态（可选）
+    * @return btn {obj} 返回创建的 btn 对象，可通过 btn.elem 获取到 dom 元素
+    * btn.onClick(cb) 通过 onClick 添加点击事件
+    */</span>
+    <span class="token comment">// createButton({ icon, name, info, active, activeChange }) {}</span>
+    
+    <span class="token comment">/*
+    * PluginBase 提供的创建插件工具栏 select 组件的方法
+    * 参数是 options 数组对象，每一项是一个下拉按钮
+    * @param icon {dataURI} 此选项的图标
+    * @param value {str} 此选项的值，onChange 获取
+    * @param label {str} 鼠标悬浮提示文字
+    * @param selected {bool} 此选项是否处于选中状态（可选）
+    * @return select {obj} 返回创建的 select 对象，可通过 select.elem 获取到 dom 元素
+    * select.onChange(cb) 通过 onChange 添加事件
+    */</span>
+    <span class="token comment">// createSelect([{ icon, value, label, selected }]) {}</span>
+    
+    <span class="token comment">// 核心方法，在此实现插件功能</span>
+    <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 注册自定义插件</span>
+Chart<span class="token punctuation">.</span><span class="token function">registerPlugin</span><span class="token punctuation">(</span>CustomPlugin<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="插件-demo"><a href="#插件-demo" class="header-anchor">#</a> 插件 Demo</h2> <h3 id="工具栏-button-按钮-demo"><a href="#工具栏-button-按钮-demo" class="header-anchor">#</a> 工具栏 button 按钮 demo</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> Chart<span class="token punctuation">,</span> <span class="token punctuation">{</span> PluginBase <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'roc-charts'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> icon <span class="token keyword">from</span> <span class="token string">'./disableDrag.svg'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">ChangeNodeDrag</span> <span class="token keyword">extends</span> <span class="token class-name">Base</span> <span class="token punctuation">{</span>
+    <span class="token keyword">static</span> pluginName <span class="token operator">=</span> <span class="token string">'changeNodeDrag'</span><span class="token punctuation">;</span>
+
+    btn<span class="token punctuation">;</span>
+
+    <span class="token comment">// 依赖 nodeDrag 插件</span>
+    <span class="token function">depend</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">'nodeDrag'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 依赖的插件未加载，自身也不创建</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>dependLoaded<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">initButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 添加工具栏按钮点击事件</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>btn<span class="token punctuation">.</span><span class="token function">onClick</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">initButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 创建工具栏按钮组件</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>btn <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">createButton</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+            icon<span class="token punctuation">,</span>
+            name<span class="token operator">:</span> <span class="token string">'关闭节点拖拽'</span><span class="token punctuation">,</span>
+            info<span class="token operator">:</span> <span class="token string">'关闭节点拖拽'</span><span class="token punctuation">,</span>
+            active<span class="token operator">:</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>$plugin<span class="token punctuation">.</span>config<span class="token punctuation">.</span>nodeDrag<span class="token punctuation">.</span>drag
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 建议将 button 组件插件的点击事件写到 onClick 方法中，这样可以在别的地方获取到此插件实例，然后直接调用 onClick 方法实现插件功能</span>
+    <span class="token function">onClick</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 修改 nodeDrag 插件的状态</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>$plugin<span class="token punctuation">.</span>config<span class="token punctuation">.</span>nodeDrag<span class="token punctuation">.</span>drag <span class="token operator">=</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>btn<span class="token punctuation">.</span>active<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+Chart<span class="token punctuation">.</span><span class="token function">registerPlugin</span><span class="token punctuation">(</span>ChangeNodeDrag<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="工具栏-select-按钮-demo"><a href="#工具栏-select-按钮-demo" class="header-anchor">#</a> 工具栏 select 按钮 demo</h3> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> Chart<span class="token punctuation">,</span> <span class="token punctuation">{</span> PluginBase <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'roc-charts'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> gof <span class="token keyword">from</span> <span class="token string">'get-object-field'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">ChangeChart</span> <span class="token keyword">extends</span> <span class="token class-name">Base</span> <span class="token punctuation">{</span>
+    <span class="token keyword">static</span> pluginName <span class="token operator">=</span> <span class="token string">'changeChart'</span>
+
+    select<span class="token punctuation">;</span>
+
+    <span class="token comment">// 默认配置</span>
+    <span class="token function">defaultConfig</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">{</span>
+            charts<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">initSelect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 绑定 select 组件的 onChange 方法，回调函数接收 option 的 value 值</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>select<span class="token punctuation">.</span><span class="token function">onChange</span><span class="token punctuation">(</span><span class="token parameter">value</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">onChange</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token function">initSelect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 获取所有注册的图布局</span>
+        <span class="token keyword">const</span> charts <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$chart<span class="token punctuation">.</span><span class="token function">getCharts</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">let</span> options <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">// 通过 this.config 获取本插件的配置，并构造 options 数组</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">gof</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>config<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token string">'charts'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token string">'length'</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>config<span class="token punctuation">.</span>charts<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+                <span class="token keyword">let</span> selected <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>$chart<span class="token punctuation">.</span>chartType <span class="token operator">===</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    selected <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>charts<span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    options<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                        icon<span class="token operator">:</span> charts<span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">.</span>icon<span class="token punctuation">,</span>
+                        value<span class="token operator">:</span> name<span class="token punctuation">,</span>
+                        label<span class="token operator">:</span> charts<span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">.</span>chartZhName <span class="token operator">||</span> charts<span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">.</span>chartName<span class="token punctuation">,</span>
+                        selected
+                    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> chartName <span class="token keyword">in</span> charts<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                options<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+                    icon<span class="token operator">:</span> charts<span class="token punctuation">[</span>chartName<span class="token punctuation">]</span><span class="token punctuation">.</span>icon<span class="token punctuation">,</span>
+                    value<span class="token operator">:</span> chartName<span class="token punctuation">,</span>
+                    label<span class="token operator">:</span> charts<span class="token punctuation">[</span>chartName<span class="token punctuation">]</span><span class="token punctuation">.</span>chartZhName <span class="token operator">||</span> charts<span class="token punctuation">[</span>chartName<span class="token punctuation">]</span><span class="token punctuation">.</span>chartName
+                <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 创建 select 组件</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>select <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">createSelect</span><span class="token punctuation">(</span>options<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 建议将 select 组件插件的 change 事件写到 onChange 方法中，这样可以在别的地方获取到此插件实例，然后直接调用 onChange 方法实现插件功能</span>
+    <span class="token function">onChange</span><span class="token punctuation">(</span><span class="token parameter">chartName</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>$chart<span class="token punctuation">.</span><span class="token function">changeChart</span><span class="token punctuation">(</span>chartName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Error</span><span class="token punctuation">(</span><span class="token string">'切换图谱失败'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+Chart<span class="token punctuation">.</span><span class="token function">registerPlugin</span><span class="token punctuation">(</span>ChangeChart<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/roc-charts-document/registerChart.html" class="prev">
+        自定义布局
+      </a></span> <!----></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/roc-charts-document/assets/js/app.b38969aa.js" defer></script><script src="/roc-charts-document/assets/js/2.7cf47e00.js" defer></script><script src="/roc-charts-document/assets/js/15.cb6b7bd1.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>基本使用 | roc-charts 开发文档</title>
+    <meta name="generator" content="VuePress 1.5.0">
+    
+    <meta name="description" content="roc-charts 是一个基于 zrender 的开源关系图谱框架">
+    <link rel="preload" href="/roc-charts-document/assets/css/0.styles.fa358280.css" as="style"><link rel="preload" href="/roc-charts-document/assets/js/app.b38969aa.js" as="script"><link rel="preload" href="/roc-charts-document/assets/js/2.7cf47e00.js" as="script"><link rel="preload" href="/roc-charts-document/assets/js/6.27241a33.js" as="script"><link rel="prefetch" href="/roc-charts-document/assets/js/10.bf12f6a8.js"><link rel="prefetch" href="/roc-charts-document/assets/js/11.296e9d8a.js"><link rel="prefetch" href="/roc-charts-document/assets/js/12.e1e526e1.js"><link rel="prefetch" href="/roc-charts-document/assets/js/13.b5b6142b.js"><link rel="prefetch" href="/roc-charts-document/assets/js/14.e3c75357.js"><link rel="prefetch" href="/roc-charts-document/assets/js/15.cb6b7bd1.js"><link rel="prefetch" href="/roc-charts-document/assets/js/3.54c6744d.js"><link rel="prefetch" href="/roc-charts-document/assets/js/4.b0834aee.js"><link rel="prefetch" href="/roc-charts-document/assets/js/5.3f2aee8f.js"><link rel="prefetch" href="/roc-charts-document/assets/js/7.82e86e26.js"><link rel="prefetch" href="/roc-charts-document/assets/js/8.a3688897.js"><link rel="prefetch" href="/roc-charts-document/assets/js/9.46b47bf6.js">
+    <link rel="stylesheet" href="/roc-charts-document/assets/css/0.styles.fa358280.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/roc-charts-document/" class="home-link router-link-active"><!----> <span class="site-name">roc-charts 开发文档</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <!----></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><!---->  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>指南</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/roc-charts-document/" aria-current="page" class="sidebar-link">介绍</a></li><li><a href="/roc-charts-document/basic.html" aria-current="page" class="active sidebar-link">基本使用</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/roc-charts-document/directory.html" class="sidebar-link">目录结构</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>进阶</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/roc-charts-document/data.html" class="sidebar-link">图谱数据 - data</a></li><li><a href="/roc-charts-document/config.html" class="sidebar-link">图谱配置 - config</a></li><li><a href="/roc-charts-document/chartAPI.html" class="sidebar-link">图谱 API</a></li><li><a href="/roc-charts-document/charts.html" class="sidebar-link">内置图布局</a></li><li><a href="/roc-charts-document/plugins.html" class="sidebar-link">内置插件</a></li><li><a href="/roc-charts-document/event.html" class="sidebar-link">事件系统</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>深入</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/roc-charts-document/registerChart.html" class="sidebar-link">自定义布局</a></li><li><a href="/roc-charts-document/registerPlugin.html" class="sidebar-link">自定义插件</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="基本使用"><a href="#基本使用" class="header-anchor">#</a> 基本使用</h1> <h3 id="基本用法"><a href="#基本用法" class="header-anchor">#</a> 基本用法</h3> <p>src/containers/Test/test.jsx 文件有基本的用法。</p> <p>可下载项目，安装依赖后（推荐使用 yarn 安装），运行 yarn start 查看效果。</p> <h3 id="安装-roc-charts"><a href="#安装-roc-charts" class="header-anchor">#</a> 安装 roc-charts:</h3> <p>yarn add roc-charts</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> Chart <span class="token keyword">from</span> 'roc<span class="token operator">-</span>charts<span class="token punctuation">;</span>
+</code></pre></div><p>或者下载项目，拷贝出 src/chart 目录到自己的项目中使用相对路径引入</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">import</span> Chart <span class="token keyword">from</span> <span class="token string">'./chart'</span><span class="token punctuation">;</span>  <span class="token comment">// 本地引入</span>
+</code></pre></div><p><strong>Chart 的使用</strong></p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">const</span> chart <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Chart</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    id<span class="token operator">:</span> <span class="token string">'chart'</span><span class="token punctuation">,</span>  <span class="token comment">// 绘制图谱 dom 的 id</span>
+    type<span class="token operator">:</span> <span class="token string">'force'</span><span class="token punctuation">,</span>  <span class="token comment">// 图谱类型</span>
+    data<span class="token operator">:</span> chartData<span class="token punctuation">,</span>  <span class="token comment">// 图谱数据</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+chart<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>config<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 调用 init 方法绘图，配置项可选</span>
+</code></pre></div><h3 id="基本参数说明"><a href="#基本参数说明" class="header-anchor">#</a> 基本参数说明</h3> <p>图谱接收的 data 数据为一个对象，包括 nodes（节点） 和 links（节点之间的连线） 两个数组</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">const</span> chartData <span class="token operator">=</span> <span class="token punctuation">{</span>
+    nodes<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            id<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>  <span class="token comment">// 节点 id</span>
+            name<span class="token operator">:</span> <span class="token string">'xxx'</span><span class="token punctuation">,</span>  <span class="token comment">// 节点名称（可选）</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    links<span class="token operator">:</span> <span class="token punctuation">[</span>
+        <span class="token punctuation">{</span>
+            <span class="token keyword">from</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>  <span class="token comment">// 开始节点 id</span>
+            to<span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>  <span class="token comment">// 结束节点 id</span>
+            text<span class="token operator">:</span> <span class="token string">'yyy'</span><span class="token punctuation">,</span>  <span class="token comment">// 线上的文字（可选）</span>
+        <span class="token punctuation">}</span>
+        <span class="token operator">...</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>将包含 nodes 和 links 的对象传入 data 中就能绘图了。</p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/roc-charts-document/" class="prev router-link-active">
+        介绍
+      </a></span> <span class="next"><a href="/roc-charts-document/directory.html">
+        目录结构
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/roc-charts-document/assets/js/app.b38969aa.js" defer></script><script src="/roc-charts-document/assets/js/2.7cf47e00.js" defer></script><script src="/roc-charts-document/assets/js/6.27241a33.js" defer></script>
+  </body>
+</html>
