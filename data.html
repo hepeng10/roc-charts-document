@@ -7,7 +7,7 @@
     <meta name="generator" content="VuePress 1.5.0">
     
     <meta name="description" content="roc-charts 是一个基于 zrender 的开源关系图谱框架">
-    <link rel="preload" href="/roc-charts-document/assets/css/0.styles.fa358280.css" as="style"><link rel="preload" href="/roc-charts-document/assets/js/app.b38969aa.js" as="script"><link rel="preload" href="/roc-charts-document/assets/js/2.7cf47e00.js" as="script"><link rel="preload" href="/roc-charts-document/assets/js/10.bf12f6a8.js" as="script"><link rel="prefetch" href="/roc-charts-document/assets/js/11.296e9d8a.js"><link rel="prefetch" href="/roc-charts-document/assets/js/12.e1e526e1.js"><link rel="prefetch" href="/roc-charts-document/assets/js/13.b5b6142b.js"><link rel="prefetch" href="/roc-charts-document/assets/js/14.e3c75357.js"><link rel="prefetch" href="/roc-charts-document/assets/js/15.cb6b7bd1.js"><link rel="prefetch" href="/roc-charts-document/assets/js/3.54c6744d.js"><link rel="prefetch" href="/roc-charts-document/assets/js/4.b0834aee.js"><link rel="prefetch" href="/roc-charts-document/assets/js/5.3f2aee8f.js"><link rel="prefetch" href="/roc-charts-document/assets/js/6.27241a33.js"><link rel="prefetch" href="/roc-charts-document/assets/js/7.82e86e26.js"><link rel="prefetch" href="/roc-charts-document/assets/js/8.a3688897.js"><link rel="prefetch" href="/roc-charts-document/assets/js/9.46b47bf6.js">
+    <link rel="preload" href="/roc-charts-document/assets/css/0.styles.fa358280.css" as="style"><link rel="preload" href="/roc-charts-document/assets/js/app.7259edce.js" as="script"><link rel="preload" href="/roc-charts-document/assets/js/2.827bcc5b.js" as="script"><link rel="preload" href="/roc-charts-document/assets/js/10.9ddc848f.js" as="script"><link rel="prefetch" href="/roc-charts-document/assets/js/11.296e9d8a.js"><link rel="prefetch" href="/roc-charts-document/assets/js/12.07b9b868.js"><link rel="prefetch" href="/roc-charts-document/assets/js/13.b5b6142b.js"><link rel="prefetch" href="/roc-charts-document/assets/js/14.e3c75357.js"><link rel="prefetch" href="/roc-charts-document/assets/js/15.14923db8.js"><link rel="prefetch" href="/roc-charts-document/assets/js/3.54c6744d.js"><link rel="prefetch" href="/roc-charts-document/assets/js/4.5a0f2458.js"><link rel="prefetch" href="/roc-charts-document/assets/js/5.3f2aee8f.js"><link rel="prefetch" href="/roc-charts-document/assets/js/6.5846eaaf.js"><link rel="prefetch" href="/roc-charts-document/assets/js/7.ef08d4c1.js"><link rel="prefetch" href="/roc-charts-document/assets/js/8.c2505c47.js"><link rel="prefetch" href="/roc-charts-document/assets/js/9.d77c2e1a.js">
     <link rel="stylesheet" href="/roc-charts-document/assets/css/0.styles.fa358280.css">
   </head>
   <body>
@@ -18,7 +18,7 @@
         <span class="token punctuation">{</span>
             id<span class="token operator">:</span> <span class="token string">'xxx'</span><span class="token punctuation">,</span>  <span class="token comment">// 节点的 id (必选)</span>
             name<span class="token operator">:</span> <span class="token string">'节点名称'</span><span class="token punctuation">,</span>  <span class="token comment">// 图谱中显示在节点下面的文字</span>
-            extend<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 右上角是否显示可扩展图标</span>
+            extend<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token comment">// 右上角是否显示可扩展图标。隐藏节点相关功能</span>
             selected<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>  <span class="token comment">// 是否处于选中状态</span>
             degree<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span>  <span class="token comment">// 节点度数，主要用于层级类图</span>
             style<span class="token operator">:</span> <span class="token punctuation">{</span>  <span class="token comment">// 节点样式</span>
@@ -32,11 +32,11 @@
                 <span class="token comment">// 其它 zrender 的样式，详见：https://ecomfe.github.io/zrender-doc/public/api.html#zrenderdisplayable 表格里的 opts.style</span>
                 <span class="token operator">...</span>otherZrenderStyle
             <span class="token punctuation">}</span><span class="token punctuation">,</span>
-            subImage<span class="token operator">:</span> <span class="token punctuation">{</span>  <span class="token comment">// 节点右上角图标</span>
+            subImage<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>  <span class="token comment">// 节点右上角图标</span>
                 image<span class="token operator">:</span> subIcon<span class="token punctuation">,</span>  <span class="token comment">// 图标 dataURI</span>
                 width<span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span>  <span class="token comment">// width, height 可不传，默认大小和 extend 相同</span>
                 height<span class="token operator">:</span> <span class="token number">10</span>
-            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
             <span class="token comment">// 其它属性，主要是一些图算法需要用到，比如圈层图中心节点需要设置 target: true</span>
             <span class="token operator">...</span>otherAttr
         <span class="token punctuation">}</span>
@@ -73,6 +73,6 @@ chart<span class="token punctuation">.</span><span class="token function">init</
       </a>
       →
     </span></p></div> </main></div><div class="global-ui"></div></div>
-    <script src="/roc-charts-document/assets/js/app.b38969aa.js" defer></script><script src="/roc-charts-document/assets/js/2.7cf47e00.js" defer></script><script src="/roc-charts-document/assets/js/10.bf12f6a8.js" defer></script>
+    <script src="/roc-charts-document/assets/js/app.7259edce.js" defer></script><script src="/roc-charts-document/assets/js/2.827bcc5b.js" defer></script><script src="/roc-charts-document/assets/js/10.9ddc848f.js" defer></script>
   </body>
 </html>
